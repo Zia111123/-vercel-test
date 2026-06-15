@@ -2,7 +2,8 @@ import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
   'https://xyybchnyizumpljsruie.supabase.co',
-  'sb_publishable_wEQAORbfLNSGUQI6pP3wQg_m0fDKML_'
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh5eWJjaG55aXp1bXBsanNydWllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE0NDU2MzgsImV4cCI6MjA5NzAyMTYzOH0.VWIG07vOjNBcgi_QFlgaLEdwP72xKHTsxKmetk0k5Hk'
+
 );
 
 export default async function handler(req, res) {
