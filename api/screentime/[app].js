@@ -14,4 +14,15 @@ export default async function handler(req, res) {
     const { action } = req.body || {};
     const r = await fetch(`${SUPABASE_URL}/rest/v1/screentime`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Prefer': 'retu
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ app_name: app, action: action || 'open', created_at: new Date().toISOString() })
+    });
+    return res.status(r.ok ? 200 : 500).json({ status: r.ok ? 'recorded' : 'error' });
+  }
+
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/screentime?app_name=eq.${encodeURIComponent(app)}&order=created_at.desc&limit=10`, {
+    headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+  });
+  const data = await r.json();
+  return res.status(200).json({ data });
+}
