@@ -14,5 +14,4 @@ export default async function handler(req, res) {
     const { action } = req.body || {};
     const r = await fetch(`${SUPABASE_URL}/rest/v1/screentime`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` },
-      body: J
+      headers: { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Prefer': 'retu
